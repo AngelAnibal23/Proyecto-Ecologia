@@ -1,6 +1,7 @@
 #include "gestorReciclaje.h"
 #include <algorithm>
 #include <iostream>
+#include "claseMaterial.h"
 
 using namespace std;
 

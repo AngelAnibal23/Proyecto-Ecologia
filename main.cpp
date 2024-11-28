@@ -1,5 +1,9 @@
 #include "gestorReciclaje.h"
 #include <iostream>
+#include "funciones.cpp"
+#include "funciones.h"
+#include <vector>
+#include <string>
 
 using namespace std;
 
@@ -9,7 +13,7 @@ void mostrarMenu() {
     cout << "2. Mostrar materiales\n";
     cout << "3. Ordenar materiales por peso\n";
     cout << "4. Salir\n";
-    cout << "Seleccione una opción: ";
+    cout << "Seleccione una opcion: ";
 }
 
 int main() {
@@ -22,11 +26,9 @@ int main() {
 
         switch (opcion) {
             case 1: {
-                float kg;
-                cout << "Ingrese el peso del papel: ";
-                cin >> kg;
-                gestor.agregarMaterial(new Papel(kg));
-                break;
+                
+                menuMateriales(); 
+                
             }
             case 2:
                 gestor.mostrarMateriales();
@@ -39,7 +41,7 @@ int main() {
                 cout << "Saliendo del programa...\n";
                 break;
             default:
-                cout << "Opción no válida.\n";
+                cout << "Opcion no valida.\n";
                 break;
         }
     } while (opcion != 4);
