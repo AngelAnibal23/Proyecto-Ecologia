@@ -1,9 +1,6 @@
 #include "gestorReciclaje.h"
 #include <algorithm>
-#include <iostream>
-#include "claseMaterial.h"
-
-using namespace std;
+using namespace std; 
 
 GestorReciclaje::~GestorReciclaje() {
     for (Material* material : materiales) {
