@@ -2,12 +2,10 @@
 #define GESTOR_RECICLAJE_H
 
 #include <vector>
-#include <string>
-
-using namespace std; 
+#include "claseMaterial.h"
 
 class GestorReciclaje {
-protected:
+private:
     vector<Material*> materiales;
 
 public:
