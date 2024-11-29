@@ -7,7 +7,7 @@
 using namespace std; 
 
 void mostrarMenu() {
-	system("cls");
+	
 	cout <<endl;
     cout << "Gestor de Reciclaje. \n";
     cout << "1. Agregar material. \n";
@@ -15,15 +15,15 @@ void mostrarMenu() {
     cout << "3. Ordenar materiales por peso. \n";
     cout << "4. Buscar material especifico. \n";
     cout << "5. Calcular las estadisticas. \n";
-    cout << "6. Salir del gestionador de reciclaje. \n"; 
+    cout << "6. Establecer meta de reciclaje \n"; 
+    cout << "7. Verificar progreso hacia la meta. \n"; 
+    cout <<	"8.	Salir del gestionador de reciclaje. \n"; 
     cout << "Seleccione una opcion: ";
-    cout <<endl;
 }
 
 void menuMateriales(GestorReciclaje& gestor) {
     int opc;
     float kg;
-	system("cls");
     cout << "\n_________________MENU MATERIALES_________________" << endl;
     cout << "1.- Papel.\n";
     cout << "2.- Carton.\n";
@@ -69,12 +69,13 @@ void menuMateriales(GestorReciclaje& gestor) {
             cout <<endl;
 			break;
     }
+    system("cls");
 }
 
 void buscarMaterial(GestorReciclaje& gestor) {
     string nombre;
     cout << "Ingrese el nombre del material que desea buscar (Papel, Carton, Vidrio, Plastico, Metal): ";
-    cin >> nombre;
+    cin >>nombre;
 
     bool encontrado = false;
 
@@ -88,6 +89,7 @@ void buscarMaterial(GestorReciclaje& gestor) {
     if (!encontrado) {
         cout << "El material '" << nombre << "' no se encuentra en la lista.\n";
     }
+    
 }
 
 void calcularEstadisticas(GestorReciclaje& gestor) {
@@ -111,6 +113,7 @@ void calcularEstadisticas(GestorReciclaje& gestor) {
         cout << "Material: " << par.first << ", Peso: " << par.second 
              << " kg (" << porcentaje << "%)\n";
     }
+    
 }
 
 int main() {
@@ -120,33 +123,53 @@ int main() {
     do {
         mostrarMenu();
         cin >> opcion;
-
+		system("cls");
         switch (opcion) {
             case 1: {
-                menuMateriales(gestor);
-                break;
+                menuMateriales(gestor); break;
             }
             case 2:
-                gestor.mostrarMateriales();
-                break;
+                gestor.mostrarMateriales(); 
+                system("pause");
+				system("cls");
+				break;
             case 3:
                 gestor.ordenarPorKg();
                 cout << "Materiales ordenados por peso.\n";
+                system("pause");
+				system("cls");
                 break; 
             case 4:
                 buscarMaterial(gestor);
-            	break;
+				system("cls");
+				break;
+                
             case 5:
             	calcularEstadisticas(gestor);
-            	break;
-            case 6:
-            	cout << "Saliendo del programa...\n";
+				system("pause");
+				system("cls");
+				break;
+            case 6: {
+            	float meta; 
+            	cout << "Ingrese la meta de reciclaje (en kg): ";
+                cin >> meta;
+                gestor.establecerMeta(meta);
+                system("pause");
+				system("cls");
+				break;
+			}
+			case 7: gestor.verificarProgreso(); 
+					system("pause");
+					system("cls");	
+					break;
+			case 8:
+            	cout<<"Saliendo del programa...\n";
         		break;
-            default:
+			default:
                 cout << "Opción no válida.\n";
                 break;
         }
-    } while (opcion != 4);
+    } while (opcion != 8);
 
     return 0;
 }

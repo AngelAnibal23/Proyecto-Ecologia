@@ -10,7 +10,6 @@ class Material {
 protected:
     string nombre;
     float kg;
-
 public:
     Material(string nombre, float kg);
     virtual ~Material() = default; 
