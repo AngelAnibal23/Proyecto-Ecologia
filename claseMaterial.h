@@ -13,9 +13,11 @@ protected:
 
 public:
     Material(string nombre, float kg);
+    virtual ~Material() = default; 
     virtual void mostrarInfo() = 0;
     float getKg();
     string getNombre();
+    void sumarPeso(float peso);
 };
 
 class Papel : public Material {

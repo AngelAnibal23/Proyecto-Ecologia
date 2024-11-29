@@ -8,8 +8,23 @@ GestorReciclaje::~GestorReciclaje() {
     }
 }
 
+Material* GestorReciclaje::buscarMaterial(const std::string& nombre) {
+    for (Material* material : materiales) {
+        if (material->getNombre() == nombre) {
+            return material; 
+        }
+    }
+    return nullptr; 
+}
+
 void GestorReciclaje::agregarMaterial(Material* material) {
-    materiales.push_back(material);
+    Material* existente = buscarMaterial(material->getNombre());
+    if (existente) {
+        existente->sumarPeso(material->getKg());
+        delete material; 
+    } else {
+        materiales.push_back(material); 
+    }
 }
 
 void GestorReciclaje::mostrarMateriales() {
@@ -19,7 +34,11 @@ void GestorReciclaje::mostrarMateriales() {
 }
 
 void GestorReciclaje::ordenarPorKg() {
-    sort(materiales.begin(), materiales.end(), [](Material* a, Material* b) {
+    std::sort(materiales.begin(), materiales.end(), [](Material* a, Material* b) {
         return a->getKg() > b->getKg();
     });
+}
+
+const vector<Material*>& GestorReciclaje::obtenerMateriales() const {
+    return materiales;
 }

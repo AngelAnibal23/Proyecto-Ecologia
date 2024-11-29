@@ -5,6 +5,7 @@ Material::Material(std::string nombre, float kg) : nombre(nombre), kg(kg) {}
 
 float Material::getKg() { return kg; }
 string Material::getNombre() { return nombre; }
+void Material::sumarPeso(float peso) { kg += peso; }
 
 Papel::Papel(float kg) : Material("Papel", kg) {}
 
