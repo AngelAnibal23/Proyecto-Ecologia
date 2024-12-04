@@ -141,6 +141,7 @@ int main() {
                 break; 
             case 4:
                 buscarMaterial(gestor);
+				system("pause");
 				system("cls");
 				break;
                 

@@ -17,9 +17,9 @@ public:
     void agregarMaterial(Material* material);
     void mostrarMateriales();
     void ordenarPorKg();
-    void establecerMeta(float meta); // Nueva función para establecer meta
-    void verificarProgreso(); // Nueva función para verificar progreso
-    float calcularPesoTotal(); // Función auxiliar para el peso total
+    void establecerMeta(float meta); 
+    void verificarProgreso(); 
+    float calcularPesoTotal(); 
 };
 
 #endif
